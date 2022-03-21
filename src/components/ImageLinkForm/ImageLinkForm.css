@@ -1,0 +1,9 @@
+.form {
+  width: 700px;
+  /* background: radial-gradient(ellipse at bottom, #407ba7 0%, #004e89 100%); */
+  background-color: rgba(42, 103, 150, 0.8);
+  /* border-color: #004e89;
+  border-width: 2px;
+  border-style: solid; */
+}
+/* backgroud reference https://projects.verou.me/css3patterns/ */
