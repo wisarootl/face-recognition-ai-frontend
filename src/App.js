@@ -8,6 +8,7 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition'
 import Signin from './components/Signin/Signin'
 import Register from './components/Register/Register'
+import Footer from './components/Footer/Footer'
 
 const initialState = {
   input: '',
@@ -44,20 +45,26 @@ class App extends Component {
 
   calculateFaceLocation = (data) => {
     console.log(data)
-    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box
+    // const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box
     const image = document.getElementById('inputimage')
     const width = Number(image.width)
     const height = Number(image.height)
-    return {
-      leftCol: clarifaiFace.left_col * width,
-      topRow: clarifaiFace.top_row * height,
-      rightCol: width - clarifaiFace.right_col * width,
-      bottomRow: height - clarifaiFace.bottom_row * height
-    }
+
+    const clarifaiFaces = data.outputs[0].data.regions.map((face) => {
+      const data = face.region_info.bounding_box
+      return {
+        topRow: height * data.top_row,
+        bottomRow: height - height * data.bottom_row,
+        leftCol: width * data.left_col,
+        rightCol: width - width * data.right_col
+      }
+    })
+
+    return clarifaiFaces
   }
 
-  displayFaceBox = (box) => {
-    this.setState({ box: box })
+  displayFaceBox = (FaceBoxes) => {
+    this.setState({ faceBoxes: FaceBoxes })
   }
 
   onInputChange = (event) => {
@@ -66,7 +73,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input })
-    fetch('https://fast-plains-08000.herokuapp.com/imageurl', {
+    fetch('https://face-recognition-ai-backend.herokuapp.com/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -76,7 +83,7 @@ class App extends Component {
       .then((response) => response.json())
       .then((response) => {
         if (response) {
-          fetch('https://fast-plains-08000.herokuapp.com/image', {
+          fetch('https://face-recognition-ai-backend.herokuapp.com/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -105,7 +112,7 @@ class App extends Component {
   }
 
   render() {
-    const { imageUrl, box, route, isSignedIn } = this.state
+    const { imageUrl, faceBoxes, route, isSignedIn } = this.state
     return (
       <div className="App">
         <Particles />
@@ -118,13 +125,14 @@ class App extends Component {
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
             />
-            <FaceRecognition box={box} imageUrl={imageUrl} />
+            <FaceRecognition faceBoxes={faceBoxes} imageUrl={imageUrl} />
           </div>
         ) : route === 'signin' ? (
           <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
         ) : (
           <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
         )}
+        <Footer />
       </div>
     )
   }

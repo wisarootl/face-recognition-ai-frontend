@@ -1,0 +1,35 @@
+article.read-me {
+  display: block;
+  line-height: 1.5rem;
+}
+
+ol {
+  text-align: left;
+}
+
+code {
+  font-size: 85%;
+  background: rgba(135, 131, 120, 0.4);
+  border-radius: 5px;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  padding-bottom: 0.2em;
+  margin: 0.5em;
+}
+
+pre {
+  font-size: 85%;
+  background: rgba(135, 131, 120, 0.4);
+  border-radius: 5px;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  padding-bottom: 0.2em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0.5em 0;
+}
+
+.inline-button {
+  position: relative;
+  top: -2px;
+}
