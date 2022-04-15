@@ -92,7 +92,7 @@ class Footer extends React.Component {
           // onClick={() => onRouteChange('signin')}
           // className="f3 link dim black underline pa3 pointer"
           >
-            © 2021 - {year} All Right Reseved. Made with ❤️ by Wisaroot
+            © 2021 - {year} All Right Reserved. Made with ❤️ by Wisaroot
           </p>
         </footer>
       </>
