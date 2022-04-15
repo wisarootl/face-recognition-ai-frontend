@@ -4,7 +4,7 @@ import './ImageLinkForm.css'
 const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
   return (
     <div className="ma4 mt0">
-      <p className="f3">{'This Magin Brain will detect faces in you pictures. Git it a try.'}</p>
+      <p className="f3">{'This Magin Brain will detect faces in your pictures. Give it a try.'}</p>
       <div className="center">
         <div className="box form center pa3 br3 shadow-5">
           <input className="f4 pa2 w-70 center" type="tex" onChange={onInputChange} />
