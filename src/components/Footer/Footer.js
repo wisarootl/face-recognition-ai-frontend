@@ -49,7 +49,7 @@ class Footer extends React.Component {
               <br />
             </li>
             <li>
-              Insert URL of face pictre such as <br />
+              Insert URL of face picture such as <br />
               <pre>
                 https://www.faceapp.com/static/img/content/compare/old-example-before@3x.jpg
               </pre>
