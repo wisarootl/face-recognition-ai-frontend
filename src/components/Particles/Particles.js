@@ -34,7 +34,7 @@ const particlesOptions = {
       bubble: {
         distance: 400,
         duration: 10,
-        opacity: 0.1,
+        opacity: 0.05,
         size: 15
       },
       push: {
@@ -54,7 +54,7 @@ const particlesOptions = {
       color: '#ffffff',
       distance: 150,
       enable: true,
-      opacity: 0.2,
+      opacity: 0.1,
       width: 1
     },
     collisions: {
@@ -65,7 +65,7 @@ const particlesOptions = {
       enable: true,
       outMode: 'bounce',
       random: false,
-      speed: 0.4,
+      speed: 0.2,
       straight: false
     },
     number: {
@@ -76,7 +76,7 @@ const particlesOptions = {
       value: 120
     },
     opacity: {
-      value: 0.1
+      value: 0.05
     },
     shape: {
       type: 'circle'
